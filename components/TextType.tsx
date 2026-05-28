@@ -55,6 +55,7 @@ const TextType = ({
   ...props
 }: TextTypeProps) => {
   const [displayedText, setDisplayedText] = useState("");
+  const [hasTypedFallback, setHasTypedFallback] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -62,7 +63,28 @@ const TextType = ({
   const cursorRef = useRef<HTMLSpanElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
 
-  const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text]);
+  const textArray = useMemo(() => {
+    const source = Array.isArray(text) ? text : [text];
+    const normalized = source
+      .filter((item): item is string => typeof item === "string")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    return normalized.length > 0 ? normalized : [""];
+  }, [text]);
+
+  const currentSourceText = textArray[currentTextIndex] ?? "";
+  const currentProcessedText = reverseMode
+    ? currentSourceText.split("").reverse().join("")
+    : currentSourceText;
+
+  useEffect(() => {
+    setDisplayedText("");
+    setCurrentCharIndex(0);
+    setIsDeleting(false);
+    setCurrentTextIndex(0);
+    setHasTypedFallback(false);
+  }, [textArray]);
 
   const getRandomSpeed = useCallback(() => {
     if (!variableSpeed) return typingSpeed;
@@ -138,8 +160,7 @@ const TextType = ({
     if (!isVisible) return;
 
     let timeout: ReturnType<typeof setTimeout>;
-    const currentText = textArray[currentTextIndex];
-    const processedText = reverseMode ? currentText.split("").reverse().join("") : currentText;
+    const processedText = currentProcessedText;
 
     const executeTypingAnimation = () => {
       if (isDeleting) {
@@ -147,7 +168,7 @@ const TextType = ({
           setIsDeleting(false);
           if (currentTextIndex === textArray.length - 1 && !loop) return;
 
-          onSentenceComplete?.(textArray[currentTextIndex], currentTextIndex);
+          onSentenceComplete?.(currentSourceText, currentTextIndex);
           setCurrentTextIndex((prev) => (prev + 1) % textArray.length);
           setCurrentCharIndex(0);
           timeout = setTimeout(() => {}, pauseDuration);
@@ -195,10 +216,34 @@ const TextType = ({
     variableSpeed,
     getRandomSpeed,
     onSentenceComplete,
+    currentProcessedText,
+    currentSourceText,
+  ]);
+
+  useEffect(() => {
+    if (!isVisible || hasTypedFallback || displayedText || !currentProcessedText) return;
+
+    const fallbackDelay = Math.max(initialDelay + 1500, 1500);
+    const fallbackTimer = window.setTimeout(() => {
+      setDisplayedText((prev) => {
+        if (prev) return prev;
+        setCurrentCharIndex(currentProcessedText.length);
+        setHasTypedFallback(true);
+        return currentProcessedText;
+      });
+    }, fallbackDelay);
+
+    return () => window.clearTimeout(fallbackTimer);
+  }, [
+    currentProcessedText,
+    displayedText,
+    hasTypedFallback,
+    initialDelay,
+    isVisible,
   ]);
 
   const shouldHideCursor =
-    hideCursorWhileTyping && (currentCharIndex < textArray[currentTextIndex].length || isDeleting);
+    hideCursorWhileTyping && (currentCharIndex < currentProcessedText.length || isDeleting);
 
   return createElement(
     Component,
