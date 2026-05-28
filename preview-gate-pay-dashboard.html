@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gate Pay Dashboard - Grey Portfolio Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face{font-family:Aeonik;src:url('font/Aeonik-Regular.ttf')}@font-face{font-family:Aeonik;src:url('font/Aeonik-Medium.ttf');font-weight:500}@font-face{font-family:Aeonik;src:url('font/Aeonik-Light.ttf');font-weight:300}@font-face{font-family:Aeonik;src:url('font/Aeonik-Bold.ttf');font-weight:700}
+    :root{--blue:#05f;--lime:#d3ff36;--paper:#fff7e5;--muted:#bbb9ba;--card:#1b1b1b}
+    *{box-sizing:border-box}html{background:#000;scroll-behavior:smooth}body{margin:0;background:#000;color:#fff;font-family:Poppins,Aeonik,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;text-rendering:geometricPrecision}a{color:inherit;text-decoration:none}img{display:block;width:100%;height:auto}
+    .header-shell{padding:0 clamp(18px,3vw,44px);overflow:hidden}.header{position:relative;height:80px;display:grid;grid-template-columns:1fr auto;align-items:center;color:rgba(241,233,220,.82)}.header:after{content:"";position:absolute;bottom:0;left:50%;width:100vw;height:1px;background:rgba(241,233,220,.12);transform:translateX(-50%)}.nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(18px,3vw,46px)}.nav-link{font-size:clamp(15px,1.04vw,18px);font-weight:500;line-height:1;letter-spacing:0;text-transform:none;position:relative}.brand-link{display:inline-flex;width:max-content;justify-content:flex-start;font-variant-numeric:tabular-nums;white-space:pre}.nav-link:after{content:"";position:absolute;right:0;bottom:-17px;left:0;height:2px;transform:scaleX(0);transform-origin:right;background:currentColor;opacity:.92;transition:transform 420ms cubic-bezier(.22,1,.36,1)}.brand-link:after{right:auto;width:100%}.nav-link:hover:after{transform:scaleX(1);transform-origin:left}
+    .wrap{max-width:1920px;margin:0 auto;padding:100px 120px 188px;display:flex;flex-direction:column;gap:120px}.intro{display:flex;flex-direction:column;gap:40px}.intro-top{display:flex;align-items:flex-end;justify-content:space-between;gap:32px}.intro-copy{max-width:1020px}h1{margin:0;color:#fff;font-size:56px;font-weight:500;line-height:1.48}.subtitle{margin:10px 0 0;color:#c3c3c3;font-size:24px;font-weight:500;line-height:1.5}.meta{color:#c3c3c3;font-size:16px;font-weight:300;line-height:1.6;text-align:right}.hero{height:800px;overflow:hidden;border-radius:16px;background:var(--blue)}.hero img{height:100%;object-fit:cover}
+    .overview{display:grid;grid-template-columns:minmax(0,1000px) 427px;justify-content:space-between;gap:64px}.lead{margin:0;color:#fff;font-size:32px;font-weight:500;line-height:1.6}.bodycopy{margin-top:48px;color:var(--muted);font-size:20px;font-weight:300;line-height:1.6}.bodycopy p{margin:0}.bullets{display:flex;flex-direction:column;gap:20px;margin-top:48px}.bullet{display:flex;align-items:center;gap:16px;color:var(--muted);font-size:20px;font-weight:300;line-height:1.6}.bullet:before{content:"";width:4px;height:32px;background:var(--lime);flex:0 0 auto}.side{display:flex;flex-direction:column;gap:48px}.side h3{margin:0 0 12px;color:#fff;font-size:16px;font-weight:400;line-height:1.6}.side p,.side a{margin:0;color:var(--muted);font-size:14px;font-weight:300;line-height:1.6}.side a{color:var(--lime)}
+    .card{position:relative;overflow:hidden;border-radius:16px;background:var(--card)}.two-up{display:grid;grid-template-columns:1fr 1fr;gap:40px}.process-card{height:752px;padding:40px}.process-card h2,.metric-card h2{margin:0;color:#fff;font-size:38px;font-weight:600;line-height:1.3}.process-card p,.metric-card p{margin:8px 0 0;color:var(--paper);font-size:19px;font-weight:300;line-height:2}.revenue-visual{position:absolute;left:40px;right:0;bottom:0;height:466px;overflow:hidden}.revenue-visual img{width:790px;max-width:none;height:466px;object-fit:cover;object-position:left top}.metric-card{height:752px;padding:40px;display:flex;flex-direction:column}.metric-spacer{flex:1;min-height:120px}.metric-number{color:#fff;font-family:Aeonik,Poppins,sans-serif;font-size:clamp(72px,5.2vw,100px);font-weight:700;line-height:.96;letter-spacing:0;white-space:nowrap}.metric-caption{margin-top:22px;color:#fff;font-size:19px;font-weight:300;line-height:2}
+    .ux{background:var(--blue);padding:64px 64px 0;overflow:hidden}.ux h2{margin:0;color:#fff;font-size:64px;font-weight:700;line-height:1.5}.ux-stage{margin-top:64px;overflow:hidden}.ux-stage img{width:100%;height:auto;border-radius:16px 16px 0 0}
+    .collage{padding:100px 100px 0;background:var(--card)}.collage-frame{overflow:hidden;border-radius:16px 16px 0 0;background:#fff;box-shadow:0 0 40px #000}.collage-frame img{width:100%;height:auto}
+    .presentation{background:var(--blue)}.presentation img{width:100%;height:auto}
+    .small-row{display:grid;grid-template-columns:1fr 1fr;gap:40px}.small-card{height:476px;background:var(--card);display:flex;align-items:center;justify-content:center;padding:42px 60px;overflow:hidden;border-radius:16px}.small-card img{border-radius:8px;max-width:100%;max-height:100%;object-fit:contain}.small-wide img{width:min(100%,700px);max-height:301px}.small-split img{width:min(100%,699px);height:auto;max-height:none}.thanks h2{margin:0 0 16px;color:#fff;font-size:24px;font-weight:500}.thanks p{margin:0;color:#fff;font-size:16px;font-weight:300;line-height:1.5}
+    @media(max-width:1100px){.wrap{padding:64px 6vw 120px;gap:80px}.overview,.two-up,.small-row{grid-template-columns:1fr}.hero{height:auto}.overview{gap:48px}.process-card,.metric-card{height:auto;min-height:560px}.collage{padding:48px 48px 0}.ux-stage{height:auto}.small-card{height:auto}.metric-spacer{min-height:160px}}@media(max-width:700px){.header{height:64px}.wrap{padding:40px 20px 80px;gap:64px}.intro-top{align-items:flex-start;flex-direction:column}h1{font-size:40px}.subtitle{font-size:18px}.meta{text-align:left}.lead{font-size:24px}.bodycopy,.bullet{font-size:16px}.process-card,.metric-card,.collage{padding:28px 28px 0}.ux{padding:28px 28px 0}.process-card h2,.metric-card h2{font-size:28px}.metric-number{font-size:48px}.metric-caption{font-size:16px;line-height:1.6}.ux h2{font-size:36px}}
+  </style>
+  <script src="preview-transition-boot.js"></script>
+</head>
+<body>
+  <div class="header-shell">
+    <header class="header">
+      <a class="nav-link brand-link" href="preview.html" data-decrypt="@GREY DESIGN PORTFOLIO" data-no-transition="true">@GREY DESIGN PORTFOLIO</a>
+      <nav class="nav">
+        <a class="nav-link" href="preview.html#work">Work</a>
+        <a class="nav-link" href="preview-about.html">About</a>
+      </nav>
+    </header>
+  </div>
+  <main class="wrap">
+    <section class="intro">
+      <div class="intro-top">
+        <div class="intro-copy">
+          <h1>Gate Pay Merchant Dashboard</h1>
+          <p class="subtitle">Secure, compliant crypto payment collection, payouts, digital assets, and global fiat asset management in one platform.</p>
+        </div>
+        <div class="meta">Product, UX/UI<br>2025-2026</div>
+      </div>
+      <div class="hero"><img src="assets/gatepay%20dasboard/1.png" alt="Gate Pay dashboard hero screen"></div>
+    </section>
+
+    <section class="overview">
+      <div>
+        <p class="lead">An integrated Web3 payment product suite for global merchants.</p>
+        <div class="bodycopy">
+          <p>Gate Pay helps businesses connect to global crypto payment scenarios, process digital asset transactions, accept Bitcoin, USDT, and 300+ mainstream cryptocurrencies, and settle in stablecoins or fiat with a secure and reliable merchant experience.</p>
+        </div>
+        <div class="bullets">
+          <div class="bullet">Lower transaction costs create more room for merchant revenue.</div>
+          <div class="bullet">More than ten years of technical infrastructure protects assets with proof of reserves.</div>
+          <div class="bullet">Global digital asset licenses support compliant business operations.</div>
+        </div>
+      </div>
+      <aside class="side">
+        <div><h3>Scope</h3><p>Product research, brand design, component design, user experience design</p></div>
+        <div><h3>Website</h3><a href="https://www.gate.com/en/pay">https://www.gate.com/en/pay</a></div>
+        <div><h3>Timeline</h3><p>2 months</p></div>
+      </aside>
+    </section>
+
+    <div class="two-up">
+      <section class="card process-card">
+        <h2>Designing Gate Pay</h2>
+        <p>A behind-the-scenes look at the strategy, process, and design decisions behind Gate Pay.</p>
+        <div class="revenue-visual"><img src="assets/gatepay%20dasboard/2.png" alt="Gate Merchant Revenue modal"></div>
+      </section>
+      <section class="card metric-card">
+        <h2>Connect with a Massive Web3 User Base</h2>
+        <p>Enabling seamless, low-cost transfers and payments using Gate account balances.</p>
+        <div class="metric-spacer"></div>
+        <div class="metric-number">40,000,000</div>
+        <div class="metric-caption">Gate Pay supports over 40 million Web3 users across the Gate ecosystem</div>
+      </section>
+    </div>
+
+    <section class="card ux">
+      <h2>User experience design<br>Should not live without real user.</h2>
+      <div class="ux-stage">
+        <img src="assets/gatepay%20dasboard/3.png" alt="Gate Pay dashboard user experience screens">
+      </div>
+    </section>
+
+    <section class="card presentation">
+      <img src="assets/gatepay%20dasboard/4.png" alt="Gate Pay dashboard secondary page presentation">
+    </section>
+
+    <section class="card collage">
+      <div class="collage-frame"><img src="assets/gatepay%20dasboard/5.png" alt="Gate Pay dashboard full page presentation"></div>
+    </section>
+
+    <div class="small-row">
+      <section class="small-card small-wide"><img src="assets/gatepay%20dasboard/6.png" alt="Gate Pay dashboard filter component module"></section>
+      <section class="small-card"><img src="assets/gatepay%20dasboard/7.png" alt="Gate Pay dashboard order details module"></section>
+    </div>
+
+    <div class="small-row">
+      <section class="small-card small-split">
+        <img src="assets/gatepay%20dasboard/8.png" alt="Payment link and button settings modals">
+      </section>
+      <section class="small-card"><img src="assets/gatepay%20dasboard/9.png" alt="Gate Pay bill management page"></section>
+    </div>
+
+    <section class="thanks">
+      <h2>Thank you for reviewing my case study.</h2>
+      <p>You are welcome to explore my other work, experiments, and selected projects. For collaboration inquiries, please contact me at grey340611@gmail.com.</p>
+    </section>
+  </main>
+  <script>
+    const decryptCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@/#$%&";
+    document.querySelectorAll('[data-decrypt]').forEach((link) => {
+      const text = link.getAttribute('data-decrypt') || link.textContent || '';
+      let frame = 0;
+      let timer = null;
+      const scramble = () => {
+        frame += 1;
+        link.textContent = text.split('').map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < frame / 1.4) return char;
+          return decryptCharacters[Math.floor(Math.random() * decryptCharacters.length)];
+        }).join('');
+        if (frame >= text.length * 1.4) {
+          link.textContent = text;
+          clearInterval(timer);
+          timer = null;
+        }
+      };
+      link.addEventListener('mouseenter', () => {
+        if (timer) clearInterval(timer);
+        frame = 0;
+        timer = setInterval(scramble, 34);
+        scramble();
+      });
+      link.addEventListener('mouseleave', () => {
+        if (timer) clearInterval(timer);
+        timer = null;
+        link.textContent = text;
+      });
+    });
+  </script>
+  <script src="preview-transition.js"></script>
+  <script src="preview-experience.js"></script>
+  <script src="preview-music-player.js"></script>
+</body>
+</html>

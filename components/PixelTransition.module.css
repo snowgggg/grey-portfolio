@@ -1,0 +1,46 @@
+.pixelatedImageCard {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  background: #050505;
+  color: #fff;
+  outline: none;
+}
+
+.pixelatedImageCard:focus-visible {
+  box-shadow: 0 0 0 2px rgba(241, 233, 220, 0.32);
+}
+
+.pixelatedImageCardRatio {
+  width: 100%;
+}
+
+.pixelatedImageCardDefault,
+.pixelatedImageCardActive,
+.pixelatedImageCardPixels {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pixelatedImageCardDefault,
+.pixelatedImageCardActive {
+  z-index: 1;
+}
+
+.pixelatedImageCardActive {
+  z-index: 2;
+  display: none;
+}
+
+.pixelatedImageCardPixels {
+  z-index: 3;
+  pointer-events: none;
+}
+
+.pixelatedImageCardPixel {
+  position: absolute;
+  display: none;
+}

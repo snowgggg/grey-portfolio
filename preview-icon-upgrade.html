@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Icon Upgrade Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #000;
+        color: #fff;
+        font-family: Poppins, Arial, sans-serif;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .site-header-wrap {
+        padding: 0 clamp(18px, 3vw, 44px);
+      }
+
+      .site-header {
+        position: relative;
+        display: grid;
+        height: 80px;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        color: rgba(241, 233, 220, 0.82);
+        font-family: Aeonik, Inter, Poppins, Arial, sans-serif;
+      }
+
+      .site-header::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        height: 1px;
+        transform: translateX(-50%);
+        background: rgba(241, 233, 220, 0.12);
+        content: "";
+      }
+
+      .site-header a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-header nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(18px, 3vw, 46px);
+      }
+
+      .brand-link {
+        display: inline-flex;
+        justify-content: flex-start;
+        width: max-content;
+      }
+
+      .link-underline {
+        position: relative;
+      }
+
+      .link-underline::after {
+        position: absolute;
+        right: 0;
+        bottom: -17px;
+        left: 0;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: right;
+        background: currentColor;
+        opacity: 0.92;
+        transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+        content: "";
+      }
+
+      .link-underline:hover::after,
+      .link-underline:focus-visible::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .brand-link::after {
+        right: auto;
+        width: 100%;
+      }
+
+      .loco-nav-link {
+        font-size: clamp(15px, 1.04vw, 18px);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .decrypt-brand {
+        display: inline-block;
+        white-space: pre;
+      }
+
+      .frame {
+        position: relative;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .asset {
+        display: block;
+        object-fit: fill;
+      }
+
+      .title {
+        width: min(1680px, calc(100% - 240px));
+        height: auto;
+        margin: 129px auto 0;
+      }
+
+      .section-title {
+        width: min(1649px, calc(100% - 240px));
+        height: 59px;
+        margin: 160px auto 0;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      .section-title h1 {
+        color: #fff;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: capitalize;
+        white-space: nowrap;
+      }
+
+      .panel-02 {
+        width: 100%;
+      }
+
+      .panel-03 {
+        width: 100%;
+      }
+
+      .panel-04 {
+        width: 100%;
+      }
+
+      .panel-05 {
+        width: 100%;
+      }
+
+      .concept-grid {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 69px;
+      }
+
+      .batch-copy {
+        display: flex;
+        width: min(1680px, calc(100% - 240px));
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin: 150px auto 0;
+      }
+
+      .batch-copy h2 {
+        width: 100%;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 1;
+        text-transform: capitalize;
+      }
+
+      .batch-copy p {
+        width: 100%;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1;
+      }
+
+      .batch-grid {
+        width: 100%;
+        margin-top: 48px;
+      }
+
+      .thanks {
+        display: flex;
+        width: min(1680px, calc(100% - 240px));
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        margin: 120px auto 160px;
+        color: #fff;
+      }
+
+      .thanks h2 {
+        width: 100%;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      .thanks p {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 900px) {
+        .site-header {
+          height: 64px;
+        }
+
+        .title,
+        .section-title,
+        .batch-copy,
+        .thanks {
+          width: calc(100% - 40px);
+        }
+
+        .title {
+          margin-top: 64px;
+        }
+
+        .section-title {
+          margin-top: 80px;
+        }
+
+        .section-title h1,
+        .batch-copy h2 {
+          font-size: 32px;
+        }
+
+        .concept-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script src="preview-transition-boot.js"></script>
+</head>
+  <body>
+    <div class="site-header-wrap">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="brand-link link-underline loco-nav-link" href="preview.html" aria-label="Grey home" data-no-transition="true">
+          <span class="decrypt-brand" data-decrypt="@GREY DESIGN PORTFOLIO">@GREY DESIGN PORTFOLIO</span>
+        </a>
+        <nav>
+          <a class="link-underline loco-nav-link" href="preview.html#work">Work</a>
+          <a class="link-underline loco-nav-link" href="preview-about.html">About</a>
+        </nav>
+      </header>
+    </div>
+
+    <main class="frame">
+      <img class="asset title" src="public/assets/icon-upgrade/01.png" alt="Icon Upgrade" />
+
+      <section class="section-title">
+        <h1>Tabbar Design Concept</h1>
+      </section>
+
+      <section class="concept-grid">
+        <img
+          class="asset panel-02"
+          src="public/assets/icon-upgrade/02.png"
+          alt="Gate icon brand symbol design concept"
+        />
+        <img
+          class="asset panel-03"
+          src="public/assets/icon-upgrade/03.png"
+          alt="Gate icon color design concept"
+        />
+        <img
+          class="asset panel-04"
+          src="public/assets/icon-upgrade/04.png"
+          alt="Gate icon form design concept"
+        />
+        <img
+          class="asset panel-05"
+          src="public/assets/icon-upgrade/05.png"
+          alt="Gate icon construction grid concept"
+        />
+      </section>
+
+      <section class="batch-copy">
+        <h2>Batch Design</h2>
+        <p>Cumulative number of icons drawn across versions: 2000+</p>
+      </section>
+
+      <img
+        class="asset batch-grid"
+        src="public/assets/icon-upgrade/06.png"
+        alt="Batch icon design grid"
+      />
+
+      <section class="thanks">
+        <h2>Thank you for reviewing my case study !</h2>
+        <p>
+          You are welcome to explore my other work, experiments, and selected projects. For collaboration inquiries,
+          please contact me at grey340611@gmail.com.
+        </p>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@/#$%&";
+
+        document.querySelectorAll("[data-decrypt]").forEach((node) => {
+          const text = node.dataset.decrypt || "";
+          let frame = 0;
+          let timer = null;
+
+          const randomChar = () => characters[Math.floor(Math.random() * characters.length)];
+
+          const start = () => {
+            window.clearInterval(timer);
+            frame = 0;
+            timer = window.setInterval(() => {
+              const revealed = Math.floor(frame / 1.45);
+              node.textContent = text
+                .split("")
+                .map((char, index) => (char === " " || index < revealed ? char : randomChar()))
+                .join("");
+
+              if (revealed >= text.length) {
+                window.clearInterval(timer);
+                node.textContent = text;
+              }
+
+              frame += 1;
+            }, 34);
+          };
+
+          const reset = () => {
+            window.clearInterval(timer);
+            node.textContent = text;
+          };
+
+          node.closest("a").addEventListener("mouseenter", start);
+          node.closest("a").addEventListener("focus", start);
+          node.closest("a").addEventListener("mouseleave", reset);
+          node.closest("a").addEventListener("blur", reset);
+        });
+      })();
+    </script>
+    <script src="preview-transition.js"></script>
+  <script src="preview-experience.js"></script>
+  <script src="preview-music-player.js"></script>
+  </body>
+</html>
