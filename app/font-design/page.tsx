@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-import DecryptedText from "@/components/DecryptedText";
-import MusicPlayer from "@/components/MusicPlayer";
+import PortfolioHeader from "@/components/PortfolioHeader";
 
 const assets = {
   hero: "/assets/font-design/01.png",
@@ -52,39 +51,6 @@ const comparisonRows = [
   ["Coinbase", "1,234,567,890 / . $"],
 ];
 
-function Header() {
-  return (
-    <div className="px-[clamp(18px,3vw,44px)]">
-      <header
-        className="relative grid h-20 grid-cols-[1fr_auto_auto] items-center gap-x-[clamp(18px,3vw,46px)] font-[Aeonik] text-bone/[0.82] after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-screen after:-translate-x-1/2 after:bg-bone/[0.12] after:content-[''] max-md:h-16"
-        aria-label="Primary navigation"
-      >
-        <a className="link-underline loco-nav-link brand-link w-max" href="/" aria-label="Grey home" data-no-transition="true">
-          <DecryptedText
-            text="@GREY DESIGN PORTFOLIO"
-            speed={34}
-            maxIterations={12}
-            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@/#$%&"
-            className="text-bone/[0.82]"
-            encryptedClassName="text-mint"
-            parentClassName="decrypt-brand"
-            animateOn="hover"
-          />
-        </a>
-        <nav className="flex items-center justify-end gap-[clamp(18px,3vw,46px)]">
-          <a className="link-underline loco-nav-link" href="/">
-            Home
-          </a>
-          <a className="link-underline loco-nav-link" href="/#work">
-            Work
-          </a>
-          </nav>
-          <MusicPlayer />
-      </header>
-    </div>
-  );
-}
-
 function CaseImage({
   src,
   alt,
@@ -114,7 +80,7 @@ function DarkPanel({
 export default function FontDesignPage() {
   return (
     <main className="min-h-screen bg-black text-white">
-      <Header />
+      <PortfolioHeader />
 
       <div className="mx-auto flex w-full max-w-[1920px] flex-col gap-[120px] px-[120px] pb-[188px] pt-[100px] max-2xl:px-[6.25vw] max-lg:gap-20 max-md:px-5 max-md:pt-10">
         <section className="flex flex-col gap-10">
