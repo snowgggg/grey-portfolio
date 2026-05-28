@@ -24,12 +24,12 @@ const loaderWords = [
 
 const featuredWork = [
   {
-    title: "Gate PayWebsite",
+    title: "Gate Pay Website",
     image: "/assets/recent-work/Frame 2147234428.png",
     href: "/gate-pay",
   },
   {
-    title: "Gate PayWebsite",
+    title: "Dashboard",
     image: "/assets/recent-work/Frame 2147234429.png",
     href: "/gate-pay-dashboard",
   },
