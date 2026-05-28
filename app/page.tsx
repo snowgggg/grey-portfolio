@@ -90,11 +90,13 @@ export default function Home() {
       window.history.scrollRestoration = "manual";
     }
 
-    if (window.location.hash) {
-      window.history.replaceState(null, "", window.location.pathname);
+    const hasHash = Boolean(window.location.hash);
+    setPreserveHashScroll(hasHash);
+
+    if (!hasHash) {
+      window.scrollTo(0, 0);
     }
 
-    window.scrollTo(0, 0);
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
@@ -122,7 +124,7 @@ export default function Home() {
 
         if (target) {
           target.scrollIntoView({ block: "start" });
-        } else {
+        } else if (!window.location.hash) {
           window.scrollTo(0, 0);
         }
         document.documentElement.style.overflow = "";
@@ -137,7 +139,16 @@ export default function Home() {
 
       <AnimatePresence
         onExitComplete={() => {
-          window.scrollTo(0, 0);
+          const target = window.location.hash
+            ? document.querySelector(window.location.hash)
+            : null;
+
+          if (target) {
+            target.scrollIntoView({ block: "start" });
+          } else {
+            window.scrollTo(0, 0);
+          }
+
           document.documentElement.style.overflow = "";
           document.body.style.overflow = "";
           setStatementReady(true);
