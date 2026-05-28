@@ -82,6 +82,9 @@ export const metadata: Metadata = {
   title: "Grey — Web3 Product Designer",
   description:
     "A cinematic portfolio for Grey, a Web3 product designer creating premium interfaces for wallets, DeFi, identity, and onchain systems.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
