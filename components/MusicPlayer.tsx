@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const playlist = [
-  "/assets/music/01_Day_One_Dust.mp3",
-  "/assets/music/02_Cornfield_Chase.mp3",
+  "/assets/music/Absolute Music.mp3",
 ];
 
 const targetVolume = 0.1;
